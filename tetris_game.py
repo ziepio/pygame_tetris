@@ -37,7 +37,7 @@ O_SHAPE_TEMPLATE = [['.....',
                      '.....']]
 
 
-def available_tetris_pieces():
+def available_tetris_pieces() -> dict:
     return {
         'S': S_SHAPE_TEMPLATE,
         'I': I_SHAPE_TEMPLATE,
@@ -80,7 +80,7 @@ def run_tetris_game():
             sys.exit()
 
 
-def create_piece():
+def create_piece() -> dict:
     piece = {}
     random_shape = random.choice(list(available_tetris_pieces().keys()))
     piece['shape'] = random_shape
@@ -122,7 +122,7 @@ def isValidPosition(game_matrix, piece, adjColumn=0, adjRow=0):
 
 def draw_score(screen, score):
     font = pygame.font.Font('freesansbold.ttf', 18)
-    score_surface = font.render('Score: %s' % score, True, (255, 255, 255))
+    score_surface = font.render(f'Score: {score}', True, (255, 255, 255))
     screen.blit(score_surface, (640 - 150, 20))
 
 
@@ -182,7 +182,7 @@ def draw_single_tetris_block(screen, matrix_cell_row, matrix_cell_column, color,
     pygame.draw.rect(screen, color, [origin_x, origin_y, 18, 18])
 
 
-def create_game_matrix():
+def create_game_matrix() -> list:
     game_matrix_columns = 10
     game_matrix_rows = 20
     matrix = []
